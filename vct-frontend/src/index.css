@@ -80,7 +80,7 @@
 }
 
 .messages {
-  @apply border m-auto mb-3;
+  @apply border m-auto mb-3 text-slate-900;
 }
 
 .message-sent, .message-received {
