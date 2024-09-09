@@ -7,6 +7,7 @@ import MessagesContainer from './MessagesContainer'
 
 import { useState } from 'react'
 
+let messageData = [];
 function App() {
   const [messages, setmessages] = useState([]);
 
@@ -18,22 +19,24 @@ function App() {
   }
   
   const sendMessage = async (pMessage) => {
-    const response = await fetch("http://127.0.0.1:8000/converse", {
+    const response = await fetch(window.location.origin + "/converse_new", {
       method: "POST",
-      body: JSON.stringify({"text": pMessage}),
+      body: JSON.stringify(messageData),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
     });
     let message = await response.text();
     // prevStateArray => [...prevStateArray, newValue]
-    setmessages(prevMessages => [...prevMessages, {text: message, isSent: false}]); 
+    setmessages(prevMessages => [...prevMessages, ["assistant", message]]);
+    messageData.push(["assistant", message])
   }
 
   const handleClick = () => {
     let input = document.querySelector(".message-input").value;
     
-    setmessages(prevMessages => [...prevMessages, {text: input, isSent: true}]); 
+    setmessages(prevMessages => [...prevMessages, ["user", input]]); 
+    messageData.push(["user", input]);
     document.querySelector(".message-input").value = "";
     sendMessage(input);
   }
