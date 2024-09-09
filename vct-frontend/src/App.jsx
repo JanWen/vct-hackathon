@@ -19,7 +19,7 @@ function App() {
   }
   
   const sendMessage = async (pMessage) => {
-    const response = await fetch(window.location.origin + "/converse_new", {
+    const response = await fetch(window.location.origin + "/converse", {
       method: "POST",
       body: JSON.stringify(messageData),
       headers: {

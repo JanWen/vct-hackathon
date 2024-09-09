@@ -11,7 +11,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "/converse_new": {
+      "/converse": {
         target: 'http://0.0.0.0:8000',
         changeOrigin: true,
         secure: false,      
