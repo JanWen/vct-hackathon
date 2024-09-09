@@ -58,6 +58,37 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "converse_new",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[[\"user\", \"my friend hector29 is a professional valorant player! he likes to play Sage!\"], [\"assistant\", \"oh waow that is so epic lol\"], [\"user\", \"what does hector29 like to play?\"]]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/converse_new",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"converse_new"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
