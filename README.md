@@ -16,9 +16,9 @@ Preparation
 Running
 1. make sure you are in vct-backend folder  
     `cd vct-backend`
-2. if venv not already active, activate it  
+2. if venv not already active, activate it
     `.\.chalice\venv\Scripts\Activate.ps1`
-3. `chalice local --port 8000`
+3. `chalice local --port 8000 --host 0.0.0.0`
 
 ## Links
 
