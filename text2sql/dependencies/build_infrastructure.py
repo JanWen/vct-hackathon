@@ -353,8 +353,8 @@ response = bedrock_agent_client.create_agent(
                 'promptType': 'PRE_PROCESSING',
                 'promptCreationMode': 'OVERRIDDEN',
                 'promptState': 'DISABLED',
-                'basePromptTemplate':'',
-                 'inferenceConfiguration': {
+                'basePromptTemplate': '{"messages": [{"role": "user", "content": "{input}"}]}',
+                'inferenceConfiguration': {
                     'temperature': 0,
                     'topP': 1,
                     'topK': 123,
