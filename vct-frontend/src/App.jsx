@@ -1,10 +1,13 @@
 import './App.css'
-
+//prov
+import { ThemeProvider } from "@/components/theme-provider"
+//comp
+import MessagesContainer from '@/components/ui/MessagesContainer'
+import { ModeToggle } from "@/components/ui/mode-toggle"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+//icon
 import { AIOutlineSend } from "@/components/ui/icons/AIOutlineSend"
-import MessagesContainer from './MessagesContainer'
-
 import { useState } from 'react'
 
 function App() {
@@ -39,11 +42,14 @@ function App() {
   }
   return (
     <>
-      <MessagesContainer messages={messages}/>
-      <div className="send-container">
-        <Input className="message-input" placeholder='Type your message...' onKeyUp={keyUpHandler}/>
-        <Button className="message-send" onClick={handleClick}><AIOutlineSend /></Button>
-      </div>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <ModeToggle></ModeToggle>
+        <MessagesContainer messages={messages}/>
+        <div className="send-container">
+          <Input className="message-input" placeholder='Type your message...' onKeyUp={keyUpHandler}/>
+          <Button className="message-send" onClick={handleClick}><AIOutlineSend /></Button>
+        </div>
+      </ThemeProvider>
     </>
   )
 }

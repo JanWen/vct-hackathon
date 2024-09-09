@@ -68,16 +68,6 @@
   body {
     @apply bg-background text-foreground;
   }
-
-  button {
-    @apply bg-primary text-primary-foreground;
-    @apply p-2 rounded-full
-  }
-  
-  input {
-    @apply ring-offset-background border-input border rounded-sm;
-    @apply py-2 px-3 w-9/12
-  }
 }
 
 .messages {
@@ -106,5 +96,5 @@
 }
 
 .send-container {
-  @apply flex justify-center gap-5 items-center;
+  @apply flex justify-center gap-5 items-center w-10/12 m-auto;
 }
