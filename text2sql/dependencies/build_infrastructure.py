@@ -9,7 +9,10 @@ from config import *
 
 # Create S3 bucket for Open API schema
 s3bucket = s3_client.create_bucket(
-    Bucket=bucket_name
+    Bucket=bucket_name,
+    CreateBucketConfiguration={
+        'LocationConstraint': 'eu-central-1'
+    },
 )
 
 
@@ -350,7 +353,7 @@ response = bedrock_agent_client.create_agent(
                 'promptType': 'PRE_PROCESSING',
                 'promptCreationMode': 'OVERRIDDEN',
                 'promptState': 'DISABLED',
-                'basePromptTemplate':' ',
+                'basePromptTemplate':'',
                  'inferenceConfiguration': {
                     'temperature': 0,
                     'topP': 1,
