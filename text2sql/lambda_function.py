@@ -6,7 +6,7 @@ def get_schema():
     try:
         glue_client = boto3.client('glue') 
     
-        database_name = 'thehistoryofbaseball' 
+        database_name = 'vct-challengers' 
         table_schema_list=[]
         response = glue_client.get_tables(DatabaseName=database_name)
         print(response)
@@ -28,7 +28,7 @@ def execute_athena_query(query):
     response = athena_client.start_query_execution(
         QueryString=query,
         QueryExecutionContext={
-            'Database': 'thehistoryofbaseball'
+            'Database': 'vct-challengers'
         },
         ResultConfiguration={
             'OutputLocation': outputLocation

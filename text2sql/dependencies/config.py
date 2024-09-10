@@ -39,7 +39,7 @@ region, account_id
 
 # assign variables
 suffix = f"{region}-{account_id}"
-agent_name = "text-2-sql-agent"
+agent_name = "vct-sql-agent"
 agent_alias_name = "workshop-alias"
 bucket_name = f'{agent_name}-{suffix}'
 bucket_key = f'{agent_name}-schema.json'
@@ -51,8 +51,8 @@ lambda_role_name = f'{agent_name}-lambda-role-{suffix}'
 agent_role_name = f'AmazonBedrockExecutionRoleForAgents_{suffix}'
 lambda_code_path = "lambda_function.py"
 lambda_name = f'{agent_name}-{suffix}'
-glue_database_name = 'thehistoryofbaseball'
-glue_crawler_name = 'TheHistoryOfBaseball'
+glue_database_name = 'vct-challengers'
+glue_crawler_name = 'vct-challengers'
 glue_role_name="AWSGlueServiceRole"
 athena_result_loc = "s3://" + bucket_name + "/athena_result/" 
 s3_loc = "s3://" + bucket_name + "/" + bucket_key
@@ -63,13 +63,16 @@ athena_result_loc = "s3://" + s3_bucket + "/athena_result/"
 foundation_Model='anthropic.claude-3-sonnet-20240229-v1:0'
 idleSessionTTLInSeconds=3600
 #print(db_loc)
-#glue_crawler_name='TheHistoryOfBaseball'
+#glue_crawler_name='vct-challengers'
 
-zip_data = "./data/TheHistoryofBaseball.zip"
-ext_data = "./data/extracted/"
+zip_data = "./data/vct-challengers.zip"
+# ext_data = "./data/extracted/"
+ext_data = "./data/esports_data/"
 
 s3_prefix = "data"
 s3_path = "s3://" + s3_bucket + "/" +s3_prefix
-s3_target = s3_path + "/TheHistoryofBaseball/"
+s3_target = s3_path + "/vct-challengers/"
 
+
+glue_classifier_name = 'vct-challengers-classifier'
 print(glue_crawler_name)

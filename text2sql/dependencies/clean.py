@@ -35,6 +35,12 @@ def delete_database(database_name):
     except Exception as e:
         print(f"Error deleting database '{database_name}':", e)
 
+def delete_classifier(classifier_name):
+    try:
+        glue_client.delete_classifier(Name=classifier_name)
+        print(f"Classifier '{classifier_name}' deleted successfully.")
+    except Exception as e:
+        print(f"Error deleting classifier '{classifier_name}':", e)
 
 # Empty and delete S3 Bucket
 try:
@@ -52,6 +58,7 @@ try:
     delete_crawler(glue_crawler_name)
     delete_tables(glue_database_name)
     delete_database(glue_database_name)
+    delete_classifier(glue_classifier_name)
 except:
     pass
 

@@ -28,3 +28,4 @@ Hackathon Technical Docs: https://docs.google.com/document/d/19H3FsWYEli6ShIV5_5
 
 https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html
 
+Hackathon S3 Bucket: https://us-west-2.console.aws.amazon.com/s3/buckets/vcthackathon-data?bucketType=general&region=us-west-2&tab=objects
