@@ -41,7 +41,6 @@ def converse(text):
         exit(1)
 
 
-<<<<<<< HEAD
 def converse_agent(session_id, text):
     # invoke aws berock agent
 
@@ -70,28 +69,3 @@ def converse_agent(session_id, text):
 
 
     return "\n".join(response_text)
-=======
-def converse_new(conversation_log: list[(str, str)]):    
-    conversation = [{
-        "role": i[0],
-        "content": [{"text": i[1]}],
-    } for i in conversation_log]
-
-    print(conversation)
-    try:
-        response = client.converse(
-            modelId=model_id,
-            messages=conversation,
-            inferenceConfig={"maxTokens":1024,"stopSequences":["User:"],"temperature":0,"topP":1},
-            additionalModelRequestFields={},
-            system=system_prompt,
-        )
-
-        # Extract and print the response text.
-        response_text = response["output"]["message"]["content"][0]["text"]
-        return response_text
-
-    except (ClientError, Exception) as e:
-        print(f"ERROR: Can't invoke '{model_id}'. Reason: {e}")
-        exit(1)
->>>>>>> main
