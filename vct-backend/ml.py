@@ -12,18 +12,14 @@ system_prompt = [{
 
 agent = boto3.client('bedrock-agent-runtime')
 
-def converse(text):
-    # Start a conversation with the user message.
-    user_message = text
-    conversation = [
-        {
-            "role": "user",
-            "content": [{"text": user_message}],
-        }
-    ]
+def converse(conversation_log: list[(str, str)]):    
+    conversation = [{
+        "role": i[0],
+        "content": [{"text": i[1]}],
+    } for i in conversation_log]
+
     print(conversation)
     try:
-        # Send the message to the model, using a basic inference configuration.
         response = client.converse(
             modelId=model_id,
             messages=conversation,
