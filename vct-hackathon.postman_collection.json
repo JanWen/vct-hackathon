@@ -29,13 +29,47 @@
 			"response": []
 		},
 		{
+			"name": "get_session_id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"text\": \"my shoes are untied can you help me please\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get_session_id",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get_session_id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "converse",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"text\": \"my shoes are untied can you help me please\"}",
+					"raw": "[[\"user\", \"my shoes are untied can you help me please\"]]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -60,13 +94,13 @@
 			"response": []
 		},
 		{
-			"name": "converse_new",
+			"name": "converse_agent",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[[\"user\", \"my friend hector29 is a professional valorant player! he likes to play Sage!\"], [\"assistant\", \"oh waow that is so epic lol\"], [\"user\", \"what does hector29 like to play?\"]]",
+					"raw": "{\"session_id\": \"08e186fb-736f-11ef-b5d8-165afc3e56e7\", \"text\": \"my shoes are untied can you help me please\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -74,7 +108,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/converse_new",
+					"raw": "http://127.0.0.1:8000/converse_agent",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -84,7 +118,7 @@
 					],
 					"port": "8000",
 					"path": [
-						"converse_new"
+						"converse_agent"
 					]
 				}
 			},
