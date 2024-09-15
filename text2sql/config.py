@@ -10,9 +10,6 @@ import pprint
 import os
 
 
-
-
-
 # setting logger
 logging.basicConfig(format='[%(asctime)s] p%(process)s {%(filename)s:%(lineno)d} %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -60,7 +57,7 @@ s3_bucket=bucket_name
 db_loc = "s3://" + s3_bucket + "/db/"
 athena_result_loc = "s3://" + s3_bucket + "/athena_result/" 
 #foundation_Model='anthropic.claude-v2:1'
-foundation_Model='anthropic.claude-3-sonnet-20240229-v1:0'
+foundation_Model='anthropic.claude-v2:1'
 idleSessionTTLInSeconds=3600
 #print(db_loc)
 #glue_crawler_name='vct-challengers'

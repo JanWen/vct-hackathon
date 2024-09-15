@@ -1,10 +1,9 @@
 from config import *
-
+from prepare_data import move_files
 
 # ### Create S3 bucket and upload API Schema
 # 
 # Agents require an API Schema stored on s3. Let's create an S3 bucket to store the file and upload the file to the newly created bucket
-
 
 
 def create_s3_bucket():
@@ -16,9 +15,8 @@ def create_s3_bucket():
         },
     )
     # Upload Open API schema to this s3 bucket
-    s3_client.upload_file("./dependencies/"+schema_name, bucket_name, bucket_key)
-
-
+    s3_client.upload_file(schema_name, bucket_name, bucket_key)
+    move_files()
 
 
 def create_glue_database():
@@ -32,8 +30,6 @@ def create_glue_database():
             'Name':glue_database_name,
         }
     )
-
-
 
 
 def create_policies():
@@ -78,17 +74,8 @@ def create_policies():
             RoleName=glue_role_name,
             PolicyArn=policy_arn
         )
-    
-
-    #crawler = glue.get_crawler(
-# )
-# pprint.pprint(crawler)
-
 
 def create_crawler():
-
-    import boto3
-
     # Initialize a boto3 client for Glue
 
     # Define parameters for the classifier
@@ -126,30 +113,6 @@ def create_crawler():
             RecrawlPolicy= {'RecrawlBehavior': 'CRAWL_EVERYTHING'},
             LineageConfiguration= {'CrawlerLineageSettings': 'DISABLE'},  
         )
-
-
-
-
-
-def prepare_data():
-    # def unzip_data(zip_data, ext_data):
-    #     print("unzip_data()... finished")
-        
-    #     ## The below works to extract all data in subfolders also
-        
-    #     with zipfile.ZipFile(zip_data, 'r') as zip_ref:
-    #         zip_ref.extractall(ext_data)
-        
-
-    def upload_data(s3_bucket,s3_prefix,ext_data):
-        
-        s3_path = "s3://" + s3_bucket + "/" +s3_prefix
-        print("upload_data() ... finished")
-        cmd = f"aws s3 sync {ext_data} {s3_path}"
-        print(cmd)
-        os.system(cmd)
-    # unzip_data(zip_data, ext_data)
-    upload_data(s3_bucket,s3_prefix,ext_data)
 
 
 
@@ -481,7 +444,6 @@ if __name__ == "__main__":
     create_glue_database()
     create_policies()
     create_crawler()
-    prepare_data()
     start_crawler()
     create_lambda_funtion()
     create_agent()
