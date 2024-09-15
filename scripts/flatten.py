@@ -6,8 +6,8 @@ name = "players"
 
 def flatten_file(name):
     data = []
-    old_path = f"text2sql/data/esports_data/vct-challengers/{name}/{name}.json"
-    new_path = f"text2sql/data/esports_data/vct-challengers/{name}/{name}_flat.json"
+    old_path = f"text2sql/data/esports_data/vct_challengers/{name}/{name}.json"
+    new_path = f"text2sql/data/esports_data/vct_challengers/{name}/{name}_flat.json"
     with open(old_path, encoding="utf8") as f:
         data = json.load(f)
 

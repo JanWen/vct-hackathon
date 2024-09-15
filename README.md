@@ -3,7 +3,7 @@
 
 # Runnning backend locally
 
-Preparation
+Preparation_
 1. Install Python 3 & AWS CLI
 2. cd vct-backend
 3. Create virtual environment (folder where all python deps are installed)  
@@ -13,12 +13,21 @@ Preparation
 5. Install Deps  
     `pip install -r requirements.txt`
 
-Running
+Running:
 1. make sure you are in vct-backend folder  
     `cd vct-backend`
 2. if venv not already active, activate it
     `.\.chalice\venv\Scripts\Activate.ps1`
 3. `chalice local --port 8000 --host 0.0.0.0`
+
+
+# Text2SQL Infra
+1. use aws profile where you want to configure infrastucture  
+2. cd text2sql
+3. activate venv `..\vct-backend\.chalice\venv\Scripts\Activate.ps1`
+3. python `build_infrastructure.py`  
+
+use `clean.py` to delete all resources!  
 
 ## Links
 

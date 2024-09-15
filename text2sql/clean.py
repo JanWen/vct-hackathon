@@ -96,7 +96,9 @@ try:
     print(type(response['agentAliasSummaries']))
     agentAliasId=next((agent['agentAliasId'] for agent in response['agentAliasSummaries'] if agent['agentAliasName'] == agent_alias_name), None)
     agentAliasId
-except:
+except Exception as e:
+    print("failed getting alias or action group id")
+    print(e)
     pass
 
 lambda_name = f'{agent_name}-{suffix}'
@@ -129,8 +131,9 @@ try:
        agentVersion='DRAFT',
        actionGroupId= action_group_id
     )
-except:
+except Exception as e:
     print('can not delete')
+    print(e)
 
 try:
     agent_alias_deletion = bedrock_agent_client.delete_agent_alias(
@@ -155,12 +158,6 @@ try:
     )
 except:
     pass
-
-
-
-
-
-
 
 policy_arns = [
     'arn:aws:iam::aws:policy/AmazonAthenaFullAccess',

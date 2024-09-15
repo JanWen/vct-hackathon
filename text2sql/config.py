@@ -48,8 +48,8 @@ lambda_role_name = f'{agent_name}-lambda-role-{suffix}'
 agent_role_name = f'AmazonBedrockExecutionRoleForAgents_{suffix}'
 lambda_code_path = "lambda_function.py"
 lambda_name = f'{agent_name}-{suffix}'
-glue_database_name = 'vct-challengers'
-glue_crawler_name = 'vct-challengers'
+glue_database_name = 'vct_challengers'
+glue_crawler_name = 'vct_challengers'
 glue_role_name="AWSGlueServiceRole"
 athena_result_loc = "s3://" + bucket_name + "/athena_result/" 
 s3_loc = "s3://" + bucket_name + "/" + bucket_key
@@ -60,16 +60,16 @@ athena_result_loc = "s3://" + s3_bucket + "/athena_result/"
 foundation_Model='anthropic.claude-v2:1'
 idleSessionTTLInSeconds=3600
 #print(db_loc)
-#glue_crawler_name='vct-challengers'
+#glue_crawler_name='vct_challengers'
 
-zip_data = "./data/vct-challengers.zip"
+zip_data = "./data/vct_challengers.zip"
 # ext_data = "./data/extracted/"
 ext_data = "./data/esports_data/"
 
 s3_prefix = "data"
 s3_path = "s3://" + s3_bucket + "/" +s3_prefix
-s3_target = s3_path + "/vct-challengers/"
+s3_target = s3_path + "/vct_challengers/"
 
 
-glue_classifier_name = 'vct-challengers-classifier'
+glue_classifier_name = 'vct_challengers-classifier'
 print(glue_crawler_name)

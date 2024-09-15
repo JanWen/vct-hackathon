@@ -36,19 +36,31 @@ def converse(text):
         exit(1)
 
 
-def converse_agent(text):
+def converse_agent(session_id, text):
     # invoke aws berock agent
 
     response = agent.invoke_agent(
-        agentAliasId="9KFXEZVX3C",
-        agentId="LWB33VIRAO",
-        sessionId="asdasd",
-        inputText="tell me about the vct and all the regions in it",
+        agentAliasId="JALFJNCRF1",
+        agentId="DHEBFNZFA9",
+        sessionId=session_id,
+        inputText=text,
     )
     print(response)
 
     completion = response["completion"]
+    response_text = []
     for i in completion:
-        print(i)
+        if "chunk" in i:
+            print("CHUNK: ", i["chunk"]["bytes"])
+            response_text.append(str(i["chunk"]["bytes"], "utf-8"))
+        elif "trace" in i:
+            trace = i["trace"]["trace"]
+            if "failureTrace" in trace:
+                print("FAILURE TRACE: ", trace["failureTrace"]["failureReason"])
+            else:
+                print(trace)
+        else:
+            print(i)
 
-converse_agent("ayosjj")
+
+    return "\n".join(response_text)

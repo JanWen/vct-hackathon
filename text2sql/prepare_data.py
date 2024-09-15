@@ -13,11 +13,11 @@ source_s3_directory = 'vct-challengers/esports-data/'
 
 s3_dest = s3
 dest_bucket_name = bucket_name
-dest_s3_directory = 'data/vct-challengers/'
+dest_s3_directory = 'data/vct_challengers/'
 
 # List objects in the specified directory
 response = s3_source.list_objects_v2(Bucket=source_bucket_name, Prefix=source_s3_directory)
-
+print(response)
 files_to_dl = [obj['Key'] for obj in response['Contents'] if obj['Key'].endswith('.json.gz')]
 
 

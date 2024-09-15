@@ -96,7 +96,7 @@ def create_crawler():
     glue.create_crawler(
             Name=glue_crawler_name,
             Role=glue_role_name,
-            DatabaseName='vct-challengers',
+            DatabaseName='vct_challengers',
             Targets={'CatalogTargets': [],
                     'DeltaTargets': [],
                     'DynamoDBTargets': [],
@@ -312,7 +312,7 @@ def create_agent():
     database tables using a sql statement then respond to the user with the answer to their question and
     the sql statement used to answer the question. Use the getschema tool first to understand the schema
     of the table then create a sql query to answer the users question.
-    Here is an example to query the table <example>SELECT * FROM vct-challengers.players LIMIT 10;</example> Do not use 
+    Here is an example to query the table <example>SELECT * FROM vct_challengers.players LIMIT 10;</example> Do not use 
     quotes for the table name. Your final answer should be in plain english."""
 
 

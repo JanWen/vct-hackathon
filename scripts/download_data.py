@@ -7,7 +7,7 @@ s3 = boto3.client('s3', region_name='us-west-2')
 
 # Define the bucket and directory
 bucket_name = 'vcthackathon-data'
-s3_directory = 'vct-challengers/esports-data/'
+s3_directory = 'vct_challengers/esports-data/'
 local_directory = './esports_data_new/'
 
 # Create local directory if it doesn't exist
