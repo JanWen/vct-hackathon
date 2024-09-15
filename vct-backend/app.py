@@ -14,7 +14,7 @@ def get_session_id():
     return str(uuid.uuid1())
 
 @app.route('/converse', methods=['POST'])
-def converse():
+def converse_new():
     # This is the JSON body the user sent in their POST request.
     user_as_json = app.current_request.json_body
     # We'll echo the json body back to the user in a 'user' key.

@@ -1,12 +1,16 @@
 import './App.css'
-
+//prov
+import { ThemeProvider } from "@/components/theme-provider"
+//comp
+import MessagesContainer from '@/components/ui/MessagesContainer'
+import { ModeToggle } from "@/components/ui/mode-toggle"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+//icon
 import { AIOutlineSend } from "@/components/ui/icons/AIOutlineSend"
-import MessagesContainer from './MessagesContainer'
-
 import { useState } from 'react'
 
+let messageData = [];
 function App() {
   const [messages, setmessages] = useState([]);
 
@@ -18,32 +22,37 @@ function App() {
   }
   
   const sendMessage = async (pMessage) => {
-    const response = await fetch("http://127.0.0.1:8000/converse", {
+    const response = await fetch(window.location.origin + "/converse", {
       method: "POST",
-      body: JSON.stringify({"text": pMessage}),
+      body: JSON.stringify(messageData),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
     });
     let message = await response.text();
     // prevStateArray => [...prevStateArray, newValue]
-    setmessages(prevMessages => [...prevMessages, {text: message, isSent: false}]); 
+    setmessages(prevMessages => [...prevMessages, ["assistant", message]]);
+    messageData.push(["assistant", message])
   }
 
   const handleClick = () => {
     let input = document.querySelector(".message-input").value;
     
-    setmessages(prevMessages => [...prevMessages, {text: input, isSent: true}]); 
+    setmessages(prevMessages => [...prevMessages, ["user", input]]); 
+    messageData.push(["user", input]);
     document.querySelector(".message-input").value = "";
     sendMessage(input);
   }
   return (
     <>
-      <MessagesContainer messages={messages}/>
-      <div className="send-container">
-        <Input className="message-input" placeholder='Type your message...' onKeyUp={keyUpHandler}/>
-        <Button className="message-send" onClick={handleClick}><AIOutlineSend /></Button>
-      </div>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <ModeToggle></ModeToggle>
+        <MessagesContainer messages={messages}/>
+        <div className="send-container">
+          <Input className="message-input" placeholder='Type your message...' onKeyUp={keyUpHandler}/>
+          <Button className="message-send" onClick={handleClick}><AIOutlineSend /></Button>
+        </div>
+      </ThemeProvider>
     </>
   )
 }
