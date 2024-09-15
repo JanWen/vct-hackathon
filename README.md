@@ -23,7 +23,7 @@ Running:
 
 # Text2SQL Infra
 1. use aws profile where you want to configure infrastucture  
-2. cd text2sql
+2. cd infra
 3. activate venv `..\vct-backend\.chalice\venv\Scripts\Activate.ps1`
 3. python `build_infrastructure.py`  
 
